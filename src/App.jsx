@@ -1,11 +1,12 @@
+import { GlobalState } from "./global/GlobalState"
 
 
 export const App = () => {
 
   return (
-    <div>
+    <GlobalState>
       
-    </div>
+    </GlobalState>
   )
 }
 
