@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { LoginPage } from "../pages/LoginPage/LoginPage"
 
 
 
@@ -9,9 +10,8 @@ export const Router = () => {
         <BrowserRouter>
             <Routes>
 
-                <Route path="/" element={<Home/>} />
-                <Route path="/login" element={<Login/>} />
-                <Route path="/signup" element={<SignUp/>} />
+                <Route path="/" element={<LoginPage/>} />
+                {/* <Route path="/signup" element={<SignU/>} /> */}
 
             </Routes>
         </BrowserRouter>
