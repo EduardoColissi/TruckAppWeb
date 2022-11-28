@@ -11,8 +11,23 @@ export const LoginPage = () => {
     const [cpf, setCpf] = React.useState("")
     const [password, setPassword] = React.useState("")
 
+    const onChangeCpf = (event) => {
+        setCpf(event.target.value)
+    }
 
-    // INCLUIR AXIOS POST PARA LOGIN
+    const onChangePassword = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const cpfMask = (value) => {
+        return value
+            .replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+            .replace(/(-\d{2})\d+?$/, '$1')
+    }
+
 
     const login = async () => {
         
@@ -28,26 +43,20 @@ export const LoginPage = () => {
 
         } catch (error) {
             console.log(error)
-            alert(error.response.data.message)
+            alert(error)
         }
 
     }
 
-    const onChangeCpf = (event) => {
-        setCpf(event.target.value)
-    }
 
-    const onChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
 
     return(
         <PageContainer>
             <h1>LOGIN WEB</h1>
 
                 <DivInput>
-                    <input placeholder="CPF" value={cpf} onChange={onChangeCpf}/>
-                    <input placeholder="Senha" value={password} onChange={onChangePassword}/>
+                    <input placeholder="CPF" value={cpfMask(cpf)} onChange={onChangeCpf} type="text" maxLength='14'/>
+                    <input placeholder="Senha" value={password} onChange={onChangePassword} type="password"/>
                 </DivInput>
 
             <button onClick={login}>ENTRAR</button>
