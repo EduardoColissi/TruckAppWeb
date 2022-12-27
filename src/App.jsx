@@ -7,10 +7,12 @@ import UsersAll from "./pages/UsersAll/UsersAll";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import FreighsAll from "./pages/FreightsAll/FreighsAll";
 import DetailsPageFreights from "./pages/DetailsPageFreights/DetailsPageFreights";
+import GlobalStyle from "./globalStyles";
 
 function App() {
   return (
     <Router>
+      <GlobalStyle />
       <Navbar />
       <Routes>
         <Route path="/login" element={<LoginPage />} />

@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BtnCreate,
-  CardContainer,
-  Container,
-  LoaderContainer,
-} from "./stylesFreightsAll";
+import { CardContainer, Container, LoaderContainer } from "./stylesFreightsAll";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Box from "@mui/material/Box";

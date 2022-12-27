@@ -1,16 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Container } from "./stylesNavbar";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Navbar = () => {
+  const navigate = useNavigate(-1);
   return (
-    <div>
-      <Link to="/users/all">
-        <button>Usuarios</button>
-      </Link>
-      <Link to="freights/all">
-        <button>Fretes</button>
-      </Link>
-    </div>
+    <Container>
+      <ArrowBackIcon className="icon" onClick={() => navigate(-1)} />
+      <div>
+        <Link to="/users/all">
+          <button>USUARIOS</button>
+        </Link>
+      </div>
+      <div>
+        <Link to="/freights/all">
+          <button>FRETES</button>
+        </Link>
+      </div>
+    </Container>
   );
 };
 

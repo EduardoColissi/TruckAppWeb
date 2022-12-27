@@ -5,7 +5,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 `;
 
 export const CardContainer = styled.div`
@@ -66,4 +65,10 @@ export const LoaderContainer = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
