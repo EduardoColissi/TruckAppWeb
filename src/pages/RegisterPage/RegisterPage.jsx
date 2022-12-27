@@ -12,7 +12,10 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmePassword] = useState("");
+  const [licensePlate, setLicensePlate] = useState("");
+  const [vehicleType, setVehicleType] = useState("");
+
+  const [numCelular, setNumCelular] = useState("");
 
   const cpfMask = (value) => {
     return value
@@ -23,7 +26,11 @@ const RegisterPage = () => {
       .replace(/(-\d{2})\d+?$/, "$1");
   };
 
-  const handleSubmit = async (e) => {
+  const telephoneNumberMask = (value) => {
+    return value.replace();
+  };
+
+  /* const handleSubmit = async (e) => {
     e.preventDefault();
 
     const body = {
@@ -40,6 +47,26 @@ const RegisterPage = () => {
     }, [name]);
 
     navigate("/login");
+  };
+*/
+  const handleSubmit = async () => {
+    try {
+      const body = {
+        name,
+        cpf,
+        password,
+        numCelular,
+        licensePlate,
+        vehicleType,
+      };
+
+      await axios.post("http://localhost:3003/users/signup", body);
+
+      //goToShippingPage(navigate);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
   };
 
   return (
@@ -81,18 +108,40 @@ const RegisterPage = () => {
             />
           </label>
         </div>
-
         <div>
           <label>
             <input
-              type="password"
-              placeholder="Confirme sua senha"
-              value={confirmPassword}
-              onChange={(e) => setConfirmePassword(e.target.value)}
+              type="text"
+              placeholder="Digite a placa do seu veiculo"
+              value={licensePlate}
+              onChange={(e) => setLicensePlate(e.target.value)}
               required
             />
           </label>
         </div>
+        <div>
+          <label>
+            <input
+              type="text"
+              placeholder="Digite o numero do seu celular"
+              value={telephoneNumberMask(numCelular)}
+              onChange={(e) => setNumCelular(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="text"
+              placeholder="Digite o tipo do seu veiculo"
+              value={vehicleType}
+              onChange={(e) => setVehicleType(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+
         <p>
           Ja tem conta? <Link to="/login">Clique aqui.</Link>
         </p>
