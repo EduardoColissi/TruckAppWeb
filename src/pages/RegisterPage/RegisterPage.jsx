@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Form } from "./RegisterStyles";
 import { useEffect } from "react";
+import { goToLoginPage } from "../../routes/coordinator";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -27,28 +28,12 @@ const RegisterPage = () => {
   };
 
   const telephoneNumberMask = (value) => {
-    return value.replace();
+    return value
+      .replace(/\D/g, "")
+      .replace(/^(\d{2})(\d)/g, "($1) $2")
+      .replace(/(\d)(\d{4})$/, "$1-$2");
   };
 
-  /* const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const body = {
-      name,
-      cpf,
-      password,
-    };
-
-    useEffect(() => {
-      axios
-        .post("http://localhost:3003/users/signup", body)
-        .then((resp) => console.log(resp))
-        .catch((err) => console.log(err));
-    }, [name]);
-
-    navigate("/login");
-  };
-*/
   const handleSubmit = async () => {
     try {
       const body = {
@@ -62,7 +47,7 @@ const RegisterPage = () => {
 
       await axios.post("http://localhost:3003/users/signup", body);
 
-      //goToShippingPage(navigate);
+      goToLoginPage(navigate);
     } catch (error) {
       console.log(error);
       alert(error);
@@ -126,6 +111,7 @@ const RegisterPage = () => {
               placeholder="Digite o numero do seu celular"
               value={telephoneNumberMask(numCelular)}
               onChange={(e) => setNumCelular(e.target.value)}
+              maxLength="15"
               required
             />
           </label>

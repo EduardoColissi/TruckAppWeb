@@ -1,5 +1,7 @@
-
 export const goToShippingPage = (navigate) => {
-    navigate('/shipping')
-}
+  navigate("/shipping");
+};
 
+export const goToLoginPage = (navigate) => {
+  navigate("/login");
+};

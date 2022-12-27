@@ -5,6 +5,10 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  div:first-child {
+    margin-top: 15px;
+  }
 `;
 
 export const CardContainer = styled.div`
