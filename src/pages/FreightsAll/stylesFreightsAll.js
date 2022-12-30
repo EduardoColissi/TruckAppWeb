@@ -15,6 +15,10 @@ export const CardContainer = styled.div`
   margin-bottom: 15px;
   text-indent: 10px;
 
+  .icon {
+    cursor: pointer;
+  }
+
   h2 {
     color: white;
   }

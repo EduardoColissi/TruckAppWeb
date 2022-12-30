@@ -48,10 +48,14 @@ const FreighsAll = () => {
 
   const getFreights = async () => {
     setLoading(true);
-    const resp = await axios.get("http://localhost:3003/freights/all");
+    try {
+      const resp = await axios.get("http://localhost:3003/freights/all");
+      console.log(resp.data);
+      setFreights(resp.data);
+    } catch (error) {
+      console.log(error);
+    }
     setLoading(false);
-    setFreights(resp.data);
-    console.log(resp.data);
   };
 
   useEffect(() => {
@@ -96,28 +100,35 @@ const FreighsAll = () => {
   const UserComponents = ({ freights }) => {
     return (
       <>
-        <Container>
-          {loading ? (
-            <LoaderContainer>
-              <div className="spinner"></div>
-            </LoaderContainer>
-          ) : (
-            freights.map((freight) => {
-              return (
-                <CardContainer key={freight.id}>
-                  <Link to={`/freights/update/${freight.id}`}>
-                    <EditIcon />
-                  </Link>
-                  <DeleteIcon onClick={() => handleDelete(freight)} />
-                  <h2>Code: {freight.code}</h2>
-                  <p>Origem: {freight.origin}</p>
-                  <p>Destino: {freight.destiny}</p>
-                  <p>Valor: R$ {freight.value}</p>
-                </CardContainer>
-              );
-            })
-          )}
-        </Container>
+        {loading ? (
+          <LoaderContainer>
+            <div className="spinner"></div>
+          </LoaderContainer>
+        ) : (
+          <Container>
+            {freights.length === 0 ? (
+              <h1>Você ainda não possui fretes</h1>
+            ) : (
+              freights.map((freight) => {
+                return (
+                  <CardContainer key={freight.id}>
+                    <Link to={`/freights/update/${freight.id}`}>
+                      <EditIcon />
+                    </Link>
+                    <DeleteIcon
+                      className="icon"
+                      onClick={() => handleDelete(freight)}
+                    />
+                    <h2>Code: {freight.code}</h2>
+                    <p>Origem: {freight.origin}</p>
+                    <p>Destino: {freight.destiny}</p>
+                    <p>Valor: R$ {freight.value}</p>
+                  </CardContainer>
+                );
+              })
+            )}
+          </Container>
+        )}
       </>
     );
   };
