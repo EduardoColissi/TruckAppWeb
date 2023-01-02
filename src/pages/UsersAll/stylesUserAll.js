@@ -13,12 +13,13 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div`
   background: linear-gradient(to right, #1e91e8, #2a83c7);
+  display: flex;
   width: 400px;
   height: 120px;
   border-radius: 10px;
   border: 1px solid #0f5c30;
   margin-bottom: 15px;
-  text-indent: 10px;
+
   cursor: pointer;
 
   h2 {
@@ -27,5 +28,9 @@ export const CardContainer = styled.div`
 
   a {
     text-decoration: none;
+  }
+
+  .btn-edit-delete {
+    justify-content: space-around;
   }
 `;
