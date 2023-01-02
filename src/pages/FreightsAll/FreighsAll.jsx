@@ -119,10 +119,12 @@ const FreighsAll = () => {
                       className="icon"
                       onClick={() => handleDelete(freight)}
                     />
-                    <h2>Code: {freight.code}</h2>
-                    <p>Origem: {freight.origin}</p>
-                    <p>Destino: {freight.destiny}</p>
-                    <p>Valor: R$ {freight.value}</p>
+                    <Link to={`freight/${freight.id}`}>
+                      <h2>Code: {freight.code}</h2>
+                      <p>Origem: {freight.origin}</p>
+                      <p>Destino: {freight.destiny}</p>
+                      <p>Valor: R$ {freight.value}</p>
+                    </Link>
                   </CardContainer>
                 );
               })

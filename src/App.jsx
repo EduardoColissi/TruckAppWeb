@@ -22,6 +22,10 @@ function App() {
         <Route path="users/all/user/:id" element={<DetailsPage />} />
         <Route path="/freights/update/:id" element={<DetailsPageFreights />} />
         <Route path="freights/all" element={<FreighsAll />} />
+        <Route
+          path="/freights/all/freight/:id"
+          element={<DetailsPageFreights />}
+        />
       </Routes>
     </Router>
   );
