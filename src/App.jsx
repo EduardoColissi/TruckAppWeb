@@ -8,6 +8,8 @@ import FreighsAll from "./pages/FreightsAll/FreighsAll";
 import DetailsPageFreights from "./pages/DetailsPageFreights/DetailsPageFreights";
 import GlobalStyle from "./globalStyles";
 import { MapPage } from "./pages/MapPage/MapPage";
+import EditFreights from "./pages/EditFreights/EditFreights";
+import EditUser from "./pages/EditUser/EditUser";
 
 function App() {
   return (
@@ -20,8 +22,13 @@ function App() {
         <Route path="/signup" element={<RegisterPage />} />
         <Route path="/users/all" element={<UsersAll />} />
         <Route path="users/all/user/:id" element={<DetailsPage />} />
-        <Route path="/freights/update/:id" element={<DetailsPageFreights />} />
+        <Route path="/freights/update/:id" element={<EditFreights />} />
+        <Route path="/users/update/:id" element={<EditUser />} />
         <Route path="freights/all" element={<FreighsAll />} />
+        <Route
+          path="/freights/all/freight/:id"
+          element={<DetailsPageFreights />}
+        />
       </Routes>
     </Router>
   );

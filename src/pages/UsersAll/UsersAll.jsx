@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { CardContainer, Container } from "./stylesUserAll";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const UsersAll = () => {
   const [users, setUsers] = useState([]);
@@ -11,12 +12,19 @@ const UsersAll = () => {
   const getUsers = async () => {
     const resp = await axios.get("http://localhost:3003/users/all");
     setUsers(resp.data);
-    console.log(resp.data);
   };
 
   useEffect(() => {
     getUsers();
   }, []);
+
+  const handleDelete = async (user) => {
+    const resp = await axios.delete(
+      `http://localhost:3003/users/delete/${user.id}`
+    );
+    getUsers();
+    console.log(resp);
+  };
 
   const UserComponents = ({ users }) => {
     return (
@@ -26,6 +34,13 @@ const UsersAll = () => {
             users.map((user) => {
               return (
                 <CardContainer key={user.id}>
+                  <Link to={`/users/update/${user.id}`}>
+                    <EditIcon />
+                  </Link>
+                  <DeleteIcon
+                    className="icon"
+                    onClick={() => handleDelete(user)}
+                  />
                   <Link to={`user/${user.id}`}>
                     <h2>Nome: {user.name}</h2>
                     <p>CPF: {user.cpf}</p>

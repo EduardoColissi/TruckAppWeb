@@ -18,6 +18,11 @@ const Navbar = () => {
           <button>FRETES</button>
         </Link>
       </div>
+      <div>
+        <Link to="/">
+          <button>MAPA</button>
+        </Link>
+      </div>
     </Container>
   );
 };
